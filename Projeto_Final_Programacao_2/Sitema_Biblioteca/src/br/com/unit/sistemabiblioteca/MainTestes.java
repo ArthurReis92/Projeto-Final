@@ -1,6 +1,5 @@
 package br.com.unit.sistemabiblioteca;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import br.com.unit.sistemabiblioteca.business.controller.EmprestimoController;
