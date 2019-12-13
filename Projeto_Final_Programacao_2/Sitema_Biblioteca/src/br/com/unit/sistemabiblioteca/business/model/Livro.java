@@ -3,12 +3,8 @@ package br.com.unit.sistemabiblioteca.business.model;
 public class Livro {
 	private String nome;
 	private String autor;
-	private String editora;
+	private long codigo;
 	private int ano;
-	private int edicao;
-	private String categoria;
-	private int quantidade;
-	//private Status status;
 	
 	public String getNome() {
 		return nome;
@@ -22,11 +18,11 @@ public class Livro {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
-	public String getEditora() {
-		return editora;
+	public long getCodigo() {
+		return codigo;
 	}
-	public void setEditora(String editora) {
-		this.editora = editora;
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
 	}
 	public int getAno() {
 		return ano;
@@ -34,24 +30,7 @@ public class Livro {
 	public void setAno(int ano) {
 		this.ano = ano;
 	}
-	public int getEdicao() {
-		return edicao;
-	}
-	public void setEdicao(int edicao) {
-		this.edicao = edicao;
-	}
-	public String getCategoria() {
-		return categoria;
-	}
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-	public int getQuantidade() {
-		return quantidade;
-	}
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
+
 	
 	
 	

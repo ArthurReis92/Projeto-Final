@@ -7,12 +7,39 @@ import br.com.unit.sistemabiblioteca.business.model.Leitor;
 
 public class LeitorDao {
 	List<Leitor> leitores;
-	
+
 	public LeitorDao() {
 		leitores = new ArrayList<>();
 	}
-	
-	
-	
-	
+
+	public void inserir(Leitor leitor) {
+		leitores.add(leitor);
+	}
+
+	public void remover(long cpf) {
+		leitores.remove(consultar(cpf));
+	}
+
+	public Leitor consultar(long cpf) {
+
+		for (Leitor leitor : leitores) {
+			if (leitor.getCpf() == cpf) {
+				return leitor;
+			}
+		}
+		return null;
+
+	}
+
+	public boolean existe(Leitor leitor) {
+		if (leitores.contains(leitor)) {
+			return true;
+		}
+		return false;
+	}
+
+	public void alterar(long cpf, Leitor leitor) {
+		leitores.set(leitores.indexOf(consultar(cpf)), leitor);
+	}
+
 }
