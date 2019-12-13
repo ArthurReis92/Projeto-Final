@@ -5,7 +5,7 @@ public class Endereco {
 	private String numero;
 	private String bairro;
 	private String cidade;
-	private String cep;
+	private long cep;
 	
 	public String getLogradouro() {
 		return logradouro;
@@ -31,12 +31,11 @@ public class Endereco {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public String getCep() {
+	public long getCep() {
 		return cep;
 	}
-	public void setCep(String cep) {
+	public void setCep(long cep) {
 		this.cep = cep;
 	}
-	
-	
+
 }

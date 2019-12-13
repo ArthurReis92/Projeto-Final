@@ -30,7 +30,7 @@ public class LivroDao {
 		return null;
 
 	}
-	
+
 	public Livro consultar(String nome) {
 
 		for (Livro livro : livros) {
@@ -53,8 +53,8 @@ public class LivroDao {
 
 	}
 
-	public boolean existe(Livro livro) {
-		if (livros.contains(livro)) {
+	public boolean existe(long codigo) {
+		if (livros.contains(consultar(codigo))) {
 			return true;
 		}
 		return false;

@@ -5,6 +5,7 @@ public class Leitor {
 	private long cpf;
 	private long matricula;
 	private double divida;
+	private Endereco endereco;
 	
 	public String getNome() {
 		return nome;
@@ -29,6 +30,12 @@ public class Leitor {
 	}
 	public void setDivida(double divida) {
 		this.divida = divida;
+	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	
 	

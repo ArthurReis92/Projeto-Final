@@ -31,8 +31,8 @@ public class FuncionarioDao {
 
 	}
 
-	public boolean existe(Funcionario funcionario) {
-		if (funcionarios.contains(funcionario)) {
+	public boolean existe(long cpf) {
+		if (funcionarios.contains(cpf)) {
 			return true;
 		}
 		return false;

@@ -29,6 +29,22 @@ public class EmprestimoDao {
 		return null;
 	}
 	
+	public Emprestimo consultarLivro(long codigo) {
+		for (Emprestimo emprestimo : emprestimos) {
+			if(emprestimo.getLivro().getCodigo() == codigo) {
+				return emprestimo;
+			}
+		}
+		return null;
+	}
+	
+	public boolean consultarDisponibilidade(long codigoLivroEmprestado) {
+		if(emprestimos.contains(consultarLivro(codigoLivroEmprestado))) {
+			return false;
+		}
+		return true;
+	}
+	
 	public List<Emprestimo> retornarTodos(){
 		return emprestimos;
 	}
@@ -36,4 +52,6 @@ public class EmprestimoDao {
 	public void alterar(long cpf, Emprestimo emprestimo) {
 		emprestimos.set(emprestimos.indexOf(consultar(cpf)), emprestimo);
 	}
+
+
 }
