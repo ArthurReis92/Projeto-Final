@@ -34,7 +34,7 @@ public class MainTestes {
 		ler.nextLine();
 
 		// Cadastro de Livros
-		System.out.println("Digite o nome, autor, codigo do livro: ");
+		System.out.println("Digite o nome, codigo, autor do livro: ");
 		String nomeLivro = ler.nextLine();
 		long codigoLivro = ler.nextLong();
 		ler.nextLine();

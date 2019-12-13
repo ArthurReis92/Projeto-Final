@@ -32,7 +32,7 @@ public class FuncionarioDao {
 	}
 
 	public boolean existe(long cpf) {
-		if (funcionarios.contains(cpf)) {
+		if (funcionarios.contains(consultar(cpf))) {
 			return true;
 		}
 		return false;
