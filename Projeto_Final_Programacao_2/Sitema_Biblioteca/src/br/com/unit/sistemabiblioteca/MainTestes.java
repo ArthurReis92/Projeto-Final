@@ -56,21 +56,30 @@ public class MainTestes {
 		}
 
 		System.out.println("Digite a matrícula/cpf do leitor que está realizando o empréstimo");
-		long cpfLeitorEmprestimo = ler.nextLong();
-		leitorController.consultar(cpfLeitorEmprestimo);
-
+		long cpfLeitorEmprestimo;
+		while (true) {
+			try {
+			cpfLeitorEmprestimo = ler.nextLong();
+			leitorController.existe(cpfLeitorEmprestimo);
+			break;
+			}catch(Exception e) {
+				ler.nextLine();
+				System.out.println(e.getMessage() + " Digite o cpf do leitor novamenteo");
+			}
+		}
 		System.out.println("Digite o código do livro que o leitor quer emprestado");
 		long codigoLivroEmprestado = ler.nextLong();
 
 		if (emprestimoController.consultarDisponibilidade(codigoLivroEmprestado)) {
-			System.out.println("Livro Disponível");
+			//System.out.println("Livro Disponível");
 			emprestimoController.inserir(funcionarioController.consultar(cpfFuncionarioEmprestimo),
 					leitorController.consultar(cpfLeitorEmprestimo), livroController.consultar(codigoLivroEmprestado));
 			System.out.println("Emprétimo realizado com sucesso!");
 		} else {
 			System.out.println("Livro indisponível");
 		}
-
+		System.out.println("---------Lista de empréstimos------------");
+		emprestimoController.retornarTodos();
 		ler.close();
 	}
 

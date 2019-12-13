@@ -43,6 +43,12 @@ public class Emprestimo {
 	public void setDataRetirada(Date dataRetirada) {
 		this.dataRetirada = dataRetirada;
 	}
+
+	@Override
+	public String toString() {
+		return "Emprestimo [livro=" + livro + ", leitor=" + leitor + ", funcionario=" + funcionario + ", dataRetirada="
+				+ dataRetirada + "]";
+	}
 	
 	
 	

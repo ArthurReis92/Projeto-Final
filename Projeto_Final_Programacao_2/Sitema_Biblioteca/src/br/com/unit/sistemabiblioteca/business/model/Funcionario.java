@@ -38,4 +38,9 @@ public class Funcionario {
 		this.endereco = endereco;
 	}
 
+	@Override
+	public String toString() {
+		return "Funcionario [nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + "]";
+	}
+
 }

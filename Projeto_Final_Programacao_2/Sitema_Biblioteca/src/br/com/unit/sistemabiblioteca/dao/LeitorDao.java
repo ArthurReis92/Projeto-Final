@@ -31,8 +31,8 @@ public class LeitorDao {
 
 	}
 
-	public boolean existe(Leitor leitor) {
-		if (leitores.contains(leitor)) {
+	public boolean existe(long cpf) {
+		if (leitores.contains(consultar(cpf))) {
 			return true;
 		}
 		return false;

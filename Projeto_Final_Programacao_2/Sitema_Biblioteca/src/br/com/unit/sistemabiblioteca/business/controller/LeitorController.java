@@ -20,16 +20,24 @@ public class LeitorController {
 		leitor.setNome(nome);
 		leitor.setEndereco(endereco);
 
-		if (leitorDao.existe(leitor)) {
-			System.out.println("Funcionário já existe!");
+		if (leitorDao.existe(cpf)) {
+			System.out.println("Leitor já existe!");
 		}
-
+		leitorDao.inserir(leitor);
 	}
 
 	public Leitor consultar(long cpf) {
 
 		return leitorDao.consultar(cpf);
 
+	}
+
+	public boolean existe(long cpf) throws Exception {
+		if(leitorDao.existe(cpf)) {
+			return true;
+		}else {
+			throw new Exception("Leitor sem cadastro!");
+		}
 	}
 
 }
