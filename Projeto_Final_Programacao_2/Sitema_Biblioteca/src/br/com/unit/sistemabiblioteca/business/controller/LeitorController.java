@@ -11,7 +11,7 @@ public class LeitorController {
 		leitorDao = new LeitorDao();
 	}
 
-	public void inserir(String nome, long cpf, String logradouro) {
+	public void inserir(String nome, long cpf, String logradouro) throws Exception {
 		Leitor leitor = new Leitor();
 		Endereco endereco = new Endereco();
 		endereco.setLogradouro(logradouro);
@@ -21,9 +21,11 @@ public class LeitorController {
 		leitor.setEndereco(endereco);
 
 		if (leitorDao.existe(cpf)) {
-			System.out.println("Leitor já existe!");
+			throw new Exception("Leitor já foi cadastrado!");
+		} else {
+			leitorDao.inserir(leitor);
 		}
-		leitorDao.inserir(leitor);
+
 	}
 
 	public Leitor consultar(long cpf) {
@@ -33,9 +35,9 @@ public class LeitorController {
 	}
 
 	public boolean existe(long cpf) throws Exception {
-		if(leitorDao.existe(cpf)) {
+		if (leitorDao.existe(cpf)) {
 			return true;
-		}else {
+		} else {
 			throw new Exception("Leitor sem cadastro!");
 		}
 	}

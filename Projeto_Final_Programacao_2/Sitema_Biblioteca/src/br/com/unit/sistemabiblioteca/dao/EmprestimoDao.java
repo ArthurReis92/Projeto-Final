@@ -53,5 +53,15 @@ public class EmprestimoDao {
 		emprestimos.set(emprestimos.indexOf(consultar(cpf)), emprestimo);
 	}
 
+//	public Emprestimo consultar(long cpf, long codigo) {
+//		List<Emprestimo> emprestimos = consultar(cpf);
+//		for (Emprestimo emprestimo : emprestimos) {
+//			if(emprestimo.equals()){
+//				
+//			}
+//		}
+//		return null;
+//	}
+
 
 }

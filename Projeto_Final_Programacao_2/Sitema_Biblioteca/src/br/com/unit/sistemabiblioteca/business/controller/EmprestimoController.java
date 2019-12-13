@@ -30,9 +30,22 @@ public class EmprestimoController {
 		
 	}
 	
+	public Emprestimo consultar(long cpf) {
+		return emprestimoDao.consultar(cpf);
+	}
+	
+//	public Emprestimo consultar(long cpf, long codigo) {
+//		return emprestimoDao.consultar(cpf, codigo);
+//	}
+	
 	public List<Emprestimo> retornarTodos(){
 		return emprestimoDao.retornarTodos();
 	}
 
+//	public void remover(long cpf, long codigo){
+//		if() {
+//			
+//		}
+//	}
 	
 }

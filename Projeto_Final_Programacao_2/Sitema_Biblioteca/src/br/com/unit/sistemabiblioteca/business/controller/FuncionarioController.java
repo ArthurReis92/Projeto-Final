@@ -17,7 +17,7 @@ public class FuncionarioController {
 
 	}
 
-	public void inserir(String nome, long cpf, String logradouro) {
+	public void inserir(String nome, long cpf, String logradouro) throws Exception {
 		Funcionario funcionario = new Funcionario();
 		Endereco endereco = new Endereco();
 		endereco.setLogradouro(logradouro);
@@ -27,12 +27,10 @@ public class FuncionarioController {
 		funcionario.setEndereco(endereco);
 
 		if (funcionarioDao.existe(cpf)) {
-			System.out.println("Funcionário já foi cadastrado");
-			return;
+			throw new Exception("O funcionário informado já tem cadastro!");
+		} else {
+			funcionarioDao.inserir(funcionario);
 		}
-
-		funcionarioDao.inserir(funcionario);
-
 	}
 
 	public boolean existe(long cpf) throws Exception {
@@ -40,6 +38,21 @@ public class FuncionarioController {
 			return true;
 		} else {
 			throw new Exception("Funcionário não cadastrado");
+		}
+	}
+
+	public void alterar(String nome, long cpf, String logradouro, long cpfAlterar) throws Exception {
+		Funcionario funcionario = new Funcionario();
+
+		if (existe(cpfAlterar)) {
+			funcionarioDao.alterar(cpfAlterar, funcionario);
+		}
+
+	}
+
+	public void remover(long cpf) throws Exception {
+		if (existe(cpf)) {
+			funcionarioDao.remover(cpf);
 		}
 	}
 

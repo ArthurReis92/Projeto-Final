@@ -7,11 +7,11 @@ import br.com.unit.sistemabiblioteca.business.model.Livro;
 
 public class LivroDao {
 	List<Livro> livros;
-	
+
 	public LivroDao() {
 		livros = new ArrayList<>();
 	}
-	
+
 	public void inserir(Livro livro) {
 		livros.add(livro);
 	}
@@ -41,7 +41,7 @@ public class LivroDao {
 		return null;
 
 	}
-	
+
 	public Livro consultar(long codigo, String nome) {
 
 		for (Livro livro : livros) {
