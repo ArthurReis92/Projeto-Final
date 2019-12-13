@@ -16,6 +16,18 @@ public class LivroController {
 		}
 		return null;
 	}
+
+	public void inserir(String nome, long codigo, String autor) {
+		Livro livro = new Livro();
+		livro.setNome(nome);
+		livro.setCodigo(codigo);
+		livro.setAutor(autor);
+		
+		
+		
+		livroDao.inserir(livro);
+		
+	}
 	
 	
 }

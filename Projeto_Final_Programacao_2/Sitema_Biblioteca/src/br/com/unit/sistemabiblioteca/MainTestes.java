@@ -6,6 +6,7 @@ import br.com.unit.sistemabiblioteca.business.controller.EmprestimoController;
 import br.com.unit.sistemabiblioteca.business.controller.FuncionarioController;
 import br.com.unit.sistemabiblioteca.business.controller.LeitorController;
 import br.com.unit.sistemabiblioteca.business.controller.LivroController;
+import br.com.unit.sistemabiblioteca.business.model.Emprestimo;
 
 public class MainTestes {
 	public static void main(String[] args) {
@@ -39,7 +40,7 @@ public class MainTestes {
 		long codigoLivro = ler.nextLong();
 		ler.nextLine();
 		String autorLivro = ler.nextLine();
-
+		livroController.inserir(nomeLivro, codigoLivro, autorLivro);
 		// Emprestimo de livros
 
 		System.out.println("Digite o cpf do funcionario que está realizando a operação");
@@ -79,7 +80,10 @@ public class MainTestes {
 			System.out.println("Livro indisponível");
 		}
 		System.out.println("---------Lista de empréstimos------------");
-		emprestimoController.retornarTodos();
+		for (Emprestimo emprestimo : emprestimoController.retornarTodos()) {
+			System.out.println(emprestimo);
+		}
+		;
 		ler.close();
 	}
 

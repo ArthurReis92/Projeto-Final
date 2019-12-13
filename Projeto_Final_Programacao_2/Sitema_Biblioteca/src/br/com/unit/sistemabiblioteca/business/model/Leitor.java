@@ -38,5 +38,10 @@ public class Leitor {
 		this.endereco = endereco;
 	}
 	
+	@Override
+	public String toString() {
+		return "\nLeitor: \n - nome: " + nome + "\n - cpf: " + cpf + "\n - Endereco: " + endereco;
+	}
+	
 	
 }

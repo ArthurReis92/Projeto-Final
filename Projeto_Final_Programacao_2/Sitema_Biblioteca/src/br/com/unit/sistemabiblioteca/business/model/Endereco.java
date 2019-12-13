@@ -40,7 +40,7 @@ public class Endereco {
 	
 	@Override
 	public String toString() {
-		return "Endereco [logradouro=" + logradouro + "]";
+		return "\n   -> Logradouro: " + logradouro;
 	}
 
 }

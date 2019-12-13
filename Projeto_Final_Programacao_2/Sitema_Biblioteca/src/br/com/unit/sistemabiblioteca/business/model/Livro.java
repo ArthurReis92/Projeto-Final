@@ -33,7 +33,7 @@ public class Livro {
 	
 	@Override
 	public String toString() {
-		return "Livro [nome=" + nome + ", autor=" + autor + ", codigo=" + codigo + "]";
+		return "\nLivro: \n - Nome: " + nome + "\n - Autor: " + autor + "\n - Código: " + codigo;
 	}
 
 	

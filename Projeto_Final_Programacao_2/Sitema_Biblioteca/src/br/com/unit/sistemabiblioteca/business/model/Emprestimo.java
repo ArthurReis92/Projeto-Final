@@ -46,8 +46,8 @@ public class Emprestimo {
 
 	@Override
 	public String toString() {
-		return "Emprestimo [livro=" + livro + ", leitor=" + leitor + ", funcionario=" + funcionario + ", dataRetirada="
-				+ dataRetirada + "]";
+		return "\nEmpréstimo: \n" + livro + "\n" + leitor + "\n" + funcionario + "\n"
+				+ dataRetirada;
 	}
 	
 	
