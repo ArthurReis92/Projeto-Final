@@ -19,7 +19,7 @@ public class MainTeste {
 		FuncionarioController funcionarioController = new FuncionarioController();
 		LivroController livroController = new LivroController();
 		EmprestimoController emprestimoController = new EmprestimoController();
-
+		
 		char resp;
 		do {
 			int n;
