@@ -49,7 +49,36 @@ public class Emprestimo {
 		return "\nEmpréstimo: \n" + livro + "\n" + leitor + "\n" + funcionario + "\n"
 				+ dataRetirada;
 	}
-	
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((leitor == null) ? 0 : leitor.hashCode());
+		result = prime * result + ((livro == null) ? 0 : livro.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Emprestimo other = (Emprestimo) obj;
+		if (leitor == null) {
+			if (other.leitor != null)
+				return false;
+		} else if (!leitor.equals(other.leitor))
+			return false;
+		if (livro == null) {
+			if (other.livro != null)
+				return false;
+		} else if (!livro.equals(other.livro))
+			return false;
+		return true;
+	}
 	
 }

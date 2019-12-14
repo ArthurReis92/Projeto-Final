@@ -42,4 +42,9 @@ public class LeitorDao {
 		leitores.set(leitores.indexOf(consultar(cpf)), leitor);
 	}
 
+	public List<Leitor> retornarTodos() {
+		return leitores;
+	}
+
+	
 }

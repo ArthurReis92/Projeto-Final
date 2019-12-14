@@ -1,5 +1,7 @@
 package br.com.unit.sistemabiblioteca.business.controller;
 
+import java.util.List;
+
 import br.com.unit.sistemabiblioteca.business.model.Livro;
 import br.com.unit.sistemabiblioteca.dao.LivroDao;
 
@@ -48,6 +50,10 @@ public class LivroController {
 		if(existe(codigoAlterar)) {
 			livroDao.alterar(codigoAlterar,livro);
 		}
+	}
+
+	public List<Livro> retornarTodos() {
+		return livroDao.retornarTodos();
 	}
 
 }

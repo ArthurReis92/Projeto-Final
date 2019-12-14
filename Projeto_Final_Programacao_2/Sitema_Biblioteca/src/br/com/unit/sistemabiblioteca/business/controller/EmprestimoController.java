@@ -16,7 +16,6 @@ public class EmprestimoController {
 	}
 
 	public boolean consultarDisponibilidade(long codigoLivroEmprestado) {
-		
 		return emprestimoDao.consultarDisponibilidade(codigoLivroEmprestado);
 	}
 
@@ -44,6 +43,16 @@ public class EmprestimoController {
 
 	public void removerEmprestimoLivro(long cpf, long codigo){
 		emprestimoDao.removerEmprestimoLivro(cpf, codigo);
+	}
+
+	public void renovar(Leitor leitor, Livro livro, Funcionario funcionario) {
+		Emprestimo emprestimo = new Emprestimo();
+		emprestimo.setLeitor(leitor);
+		emprestimo.setFuncionario(funcionario);
+		emprestimo.setLivro(livro);
+		
+		emprestimoDao.renovar(emprestimo);
+		
 	}
 	
 }

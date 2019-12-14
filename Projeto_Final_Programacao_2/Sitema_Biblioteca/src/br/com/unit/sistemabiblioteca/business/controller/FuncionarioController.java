@@ -1,5 +1,7 @@
 package br.com.unit.sistemabiblioteca.business.controller;
 
+import java.util.List;
+
 import br.com.unit.sistemabiblioteca.business.model.Endereco;
 import br.com.unit.sistemabiblioteca.business.model.Funcionario;
 import br.com.unit.sistemabiblioteca.dao.FuncionarioDao;
@@ -54,6 +56,10 @@ public class FuncionarioController {
 		if (existe(cpf)) {
 			funcionarioDao.remover(cpf);
 		}
+	}
+
+	public List<Funcionario> retornarTodos() {
+		return funcionarioDao.retornarTodos();
 	}
 
 }

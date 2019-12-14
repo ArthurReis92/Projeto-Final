@@ -63,4 +63,8 @@ public class LivroDao {
 	public void alterar(long codigo, Livro livro) {
 		livros.set(livros.indexOf(consultar(codigo)), livro);
 	}
+
+	public List<Livro> retornarTodos() {
+		return livros;
+	}
 }

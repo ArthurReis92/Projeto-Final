@@ -17,6 +17,9 @@ public class MainTestes {
 		LivroController livroController = new LivroController();
 		EmprestimoController emprestimoController = new EmprestimoController();
 
+		
+		
+		
 		// Cadastro de leitor
 
 		System.out.println("Digite o nome, cpf, logradouro do leitor: ");

@@ -71,6 +71,16 @@ public class EmprestimoDao {
 		}
 	}
 
+	public void renovar(Emprestimo emprestimo) {
+		for (Emprestimo emp : emprestimos) {
+			if(emp.equals(emprestimo)) {
+				emprestimos.remove(emp);
+				emprestimos.add(emprestimo);
+			}
+		}
+		
+	}
+
 
 
 }

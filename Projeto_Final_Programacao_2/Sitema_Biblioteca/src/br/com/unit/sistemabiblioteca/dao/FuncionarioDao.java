@@ -42,4 +42,8 @@ public class FuncionarioDao {
 		funcionarios.set(funcionarios.indexOf(consultar(cpf)), funcionario);
 	}
 
+	public List<Funcionario> retornarTodos() {
+		return funcionarios;
+	}
+
 }
