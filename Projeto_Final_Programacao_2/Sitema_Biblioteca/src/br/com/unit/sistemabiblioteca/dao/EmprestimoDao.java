@@ -81,6 +81,22 @@ public class EmprestimoDao {
 		
 	}
 
+	public boolean existe(Emprestimo emprestimo) {
+		if (emprestimos.contains(emprestimo)) {
+			return true;
+		}
+		return false;
+	}
+
+	public Emprestimo consultar(long cpf, long codigo) {
+		for (Emprestimo emprestimo : emprestimos) {
+			if(emprestimo.getLeitor().getCpf() == cpf && emprestimo.getLivro().getCodigo() == codigo) {
+				return emprestimo;
+			}
+		}
+		return null;
+	}
+
 
 
 }

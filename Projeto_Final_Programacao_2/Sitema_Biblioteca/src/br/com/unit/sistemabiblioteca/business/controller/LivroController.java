@@ -47,6 +47,10 @@ public class LivroController {
 
 	public void alterar(String nome, long codigo, String autor, long codigoAlterar) throws Exception {
 		Livro livro = new Livro();
+		livro.setAutor(autor);
+		livro.setCodigo(codigo);
+		livro.setNome(nome);
+		
 		if(existe(codigoAlterar)) {
 			livroDao.alterar(codigoAlterar,livro);
 		}
@@ -55,5 +59,12 @@ public class LivroController {
 	public List<Livro> retornarTodos() {
 		return livroDao.retornarTodos();
 	}
+
+	public void inserirTodos(List<Livro> listaDeLivros) {
+		livroDao.inserirTodos(listaDeLivros);
+		
+	}
+
+
 
 }

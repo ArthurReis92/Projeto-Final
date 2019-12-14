@@ -55,7 +55,8 @@ public class LeitorController {
 
 		leitor.setCpf(cpf);
 		leitor.setNome(nome);
-
+		leitor.setEndereco(endereco);
+		
 		if (existe(cpfAlterar)) {
 			leitorDao.alterar(cpfAlterar, leitor);
 		}

@@ -14,7 +14,7 @@ public class FuncionarioController {
 	}
 
 	public Funcionario consultar(long cpf) {
-
+		
 		return funcionarioDao.consultar(cpf);
 
 	}
@@ -45,7 +45,12 @@ public class FuncionarioController {
 
 	public void alterar(String nome, long cpf, String logradouro, long cpfAlterar) throws Exception {
 		Funcionario funcionario = new Funcionario();
-
+		Endereco endereco = new Endereco();
+		endereco.setLogradouro(logradouro);
+		funcionario.setCpf(cpf);
+		funcionario.setNome(nome);
+		funcionario.setEndereco(endereco);
+		
 		if (existe(cpfAlterar)) {
 			funcionarioDao.alterar(cpfAlterar, funcionario);
 		}

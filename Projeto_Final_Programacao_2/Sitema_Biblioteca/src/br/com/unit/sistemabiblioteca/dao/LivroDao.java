@@ -67,4 +67,8 @@ public class LivroDao {
 	public List<Livro> retornarTodos() {
 		return livros;
 	}
+
+	public void inserirTodos(List<Livro> listaDeLivros) {
+		livros = listaDeLivros;
+	}
 }
