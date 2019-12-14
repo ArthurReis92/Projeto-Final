@@ -11,9 +11,11 @@ import br.com.unit.sistemabiblioteca.business.controller.FuncionarioController;
 import br.com.unit.sistemabiblioteca.business.controller.LeitorController;
 import br.com.unit.sistemabiblioteca.business.controller.LivroController;
 import br.com.unit.sistemabiblioteca.business.model.Emprestimo;
+import br.com.unit.sistemabiblioteca.business.model.Endereco;
 import br.com.unit.sistemabiblioteca.business.model.Funcionario;
 import br.com.unit.sistemabiblioteca.business.model.Leitor;
 import br.com.unit.sistemabiblioteca.business.model.Livro;
+import br.com.unit.sistemabiblioteca.dao.LeitorDao;
 
 public class MainTeste {
 	public static void main(String[] args) throws FileNotFoundException {
@@ -65,6 +67,79 @@ public class MainTeste {
 			listaDeLivros.add(livroDaLista);
 		}
 		livroController.inserirTodos(listaDeLivros);
+
+		c = new Scanner(new File("LeitorCpf.txt"));
+		na = new Scanner(new File("LeitorNome.txt"));
+		at = new Scanner(new File("LeitorEndereco.txt"));
+
+		ArrayList<String> nomeLeitor1 = new ArrayList<>();
+		ArrayList<String> logradouro1 = new ArrayList<>();
+		ArrayList<Long> cpfLeitor1 = new ArrayList<>();
+
+		while (na.hasNextLine()) {
+			nomeLeitor1.add(na.nextLine());
+		}
+		while (c.hasNextLine()) {
+			cpfLeitor1.add(c.nextLong());
+		}
+		while (at.hasNext()) {
+			logradouro1.add(at.nextLine());
+		}
+
+		long cpf1;
+		String leitorNome, logradouro2;
+		List<Leitor> listaLeitor = new ArrayList<>();
+
+		for (int i = 0; i < 7; i++) {
+			cpf1 = cpfLeitor1.get(i);
+			leitorNome = nomeLeitor1.get(i);
+			logradouro2 = logradouro1.get(i);
+			Leitor leitorDaLista = new Leitor();
+			Endereco enderecoLista = new Endereco();
+			enderecoLista.setLogradouro(logradouro2);
+			leitorDaLista.setCpf(cpf1);
+			leitorDaLista.setNome(leitorNome);
+			leitorDaLista.setEndereco(enderecoLista);
+			listaLeitor.add(leitorDaLista);
+		}
+		leitorController.inserirTodos(listaLeitor);
+
+		c = new Scanner(new File("cpfFuncionario.txt"));
+		na = new Scanner(new File("nomeFuncionario.txt"));
+		at = new Scanner(new File("enderecoFuncionario.txt"));
+
+		ArrayList<String> nomeFuncionario1 = new ArrayList<>();
+		ArrayList<String> logradouroFuncionario1 = new ArrayList<>();
+		ArrayList<Long> cpfFuncionario1 = new ArrayList<>();
+
+		while (na.hasNextLine()) {
+			nomeFuncionario1.add(na.nextLine());
+		}
+		while (c.hasNextLine()) {
+			cpfFuncionario1.add(c.nextLong());
+		}
+		while (at.hasNext()) {
+			logradouroFuncionario1.add(at.nextLine());
+		}
+
+		long cpf2;
+		String funcionarioNome, logradouro3;
+		List<Funcionario> listaFuncionario = new ArrayList<>();
+
+		for (int i = 0; i < 7; i++) {
+			cpf2 = cpfFuncionario1.get(i);
+			funcionarioNome = nomeFuncionario1.get(i);
+			logradouro3 = logradouroFuncionario1.get(i);
+			Funcionario funcionarioLista = new Funcionario();
+			Endereco enderecoLista = new Endereco();
+			enderecoLista.setLogradouro(logradouro3);
+			funcionarioLista.setCpf(cpf2);
+			funcionarioLista.setNome(funcionarioNome);
+			funcionarioLista.setEndereco(enderecoLista);
+			listaFuncionario.add(funcionarioLista);
+		}
+
+		funcionarioController.inserirTodos(listaFuncionario);
 
 		char resp;
 		do {
@@ -416,14 +491,14 @@ public class MainTeste {
 					ler.nextLine();
 					switch (m) {
 					case 1:
-						
+
 						do {
 							System.out.println("Digite o nome, código e autor do livro: ");
 							while (true) {
 								try {
-									
+
 									String nomeLivro = ler.nextLine();
-									
+
 									long codigoLivro = ler.nextLong();
 									ler.nextLine();
 									String autorLivro = ler.nextLine();
@@ -431,7 +506,7 @@ public class MainTeste {
 									livroController.inserir(nomeLivro, codigoLivro, autorLivro);
 									break;
 								} catch (Exception e) {
-									
+
 									if (e.getMessage() != null) {
 										System.out.println(
 												e.getMessage() + " Digite novamente o nome, código e autor do livro: ");
@@ -614,14 +689,22 @@ public class MainTeste {
 								}
 							}
 
-							if (emprestimoController.consultarDisponibilidade(codigoLivroEmprestado)) {
+							try {
 								emprestimoController.inserir(funcionarioController.consultar(cpfFuncionarioEmprestimo),
 										leitorController.consultar(cpfLeitorEmprestimo),
 										livroController.consultar(codigoLivroEmprestado));
 								System.out.println("Empréstimo realizado com sucesso!");
-							} else {
-								System.out.println("Livro indisponível");
+							} catch (Exception e) {
+								System.out.println(e.getMessage());
 							}
+//							if (emprestimoController.consultarDisponibilidade(codigoLivroEmprestado)) {
+//								emprestimoController.inserir(funcionarioController.consultar(cpfFuncionarioEmprestimo),
+//										leitorController.consultar(cpfLeitorEmprestimo),
+//										livroController.consultar(codigoLivroEmprestado));
+//								System.out.println("Empréstimo realizado com sucesso!");
+//							} else {
+//								System.out.println("Livro indisponível");
+//							}
 
 							System.out.println("Deseja realizar mais algum empréstimo? (s/n)");
 							resp = ler.next().charAt(0);
@@ -646,7 +729,7 @@ public class MainTeste {
 								try {
 									long cpfLeitor = ler.nextLong();
 									long codigoLivro = ler.nextLong();
-									
+
 									emprestimoController.renovar(leitorController.consultar(cpfLeitor),
 											livroController.consultar(codigoLivro),
 											funcionarioController.consultar(cpfFuncionarioEmprestimo));
@@ -672,23 +755,23 @@ public class MainTeste {
 
 						do {
 							System.out.println("Digite o nome do leitor e o código do livro a ser devolvido: ");
+							ler.nextLine();
 							while (true) {
 								long cpfLeitor;
 								long codigoLivro;
 								try {
-//									ler.nextLine();
+
 									cpfLeitor = ler.nextLong();
 									codigoLivro = ler.nextLong();
-									if(emprestimoController.consultar(cpfLeitor, codigoLivro) == null) {
-										break;
-									}
+
 									emprestimoController.removerEmprestimoLivro(cpfLeitor, codigoLivro);
 									break;
 								} catch (Exception e) {
-									
+
 									if (e.getMessage() != null) {
 										System.out.println(e.getMessage()
 												+ " Digite novamente o nome do leitor e o código do livro a ser devolvido: ");
+										break;
 									} else {
 										System.out.println(
 												"Dados inválidos! Digite novamente o nome do leitor e o código do livro a ser devolvido: ");

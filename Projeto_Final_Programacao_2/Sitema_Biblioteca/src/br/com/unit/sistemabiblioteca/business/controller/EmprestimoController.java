@@ -19,24 +19,28 @@ public class EmprestimoController {
 		return emprestimoDao.consultarDisponibilidade(codigoLivroEmprestado);
 	}
 
-	public void inserir(Funcionario funcionario, Leitor leitor, Livro livro) {
+	public void inserir(Funcionario funcionario, Leitor leitor, Livro livro) throws Exception {
 		Emprestimo emprestimo = new Emprestimo();
 		emprestimo.setFuncionario(funcionario);
 		emprestimo.setLeitor(leitor);
 		emprestimo.setLivro(livro);
 
-		emprestimoDao.inserir(emprestimo);
+		if (consultarDisponibilidade(livro.getCodigo())) {
+			emprestimoDao.inserir(emprestimo);
+		}else {
+			throw new Exception("Livro indisponível!");
+		}
 
 	}
 
 	public Emprestimo consultar(long cpf) {
 		return emprestimoDao.consultar(cpf);
 	}
-	
+
 	public Emprestimo consultar(long cpf, long codigo) {
-		return emprestimoDao.consultar(cpf,codigo);
+		return emprestimoDao.consultar(cpf, codigo);
 	}
-	
+
 	public List<Emprestimo> retornarEmprestimosLeitor(long cpf) {
 		return emprestimoDao.retornarEmprestimosLeitor(cpf);
 	}
@@ -46,7 +50,11 @@ public class EmprestimoController {
 	}
 
 	public void removerEmprestimoLivro(long cpf, long codigo) throws Exception {
+
 		Emprestimo emprestimo = consultar(cpf, codigo);
+		if (!existe(emprestimo)) {
+			throw new Exception("Não há mais empréstimos desse livro para esse leitor!");
+		}
 		if (existe(emprestimo)) {
 			emprestimoDao.removerEmprestimoLivro(cpf, codigo);
 		} else {

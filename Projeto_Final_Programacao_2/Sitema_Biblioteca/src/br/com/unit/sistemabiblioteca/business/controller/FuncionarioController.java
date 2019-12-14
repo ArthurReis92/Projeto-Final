@@ -67,4 +67,9 @@ public class FuncionarioController {
 		return funcionarioDao.retornarTodos();
 	}
 
+	public void inserirTodos(List<Funcionario> listaFuncionario) {
+		funcionarioDao.inserirTodos(listaFuncionario);
+		
+	}
+
 }

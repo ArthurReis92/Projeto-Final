@@ -102,12 +102,13 @@ public class MainTestes {
 
 		long codigoLivroEmprestado = ler.nextLong();
 
-		if (emprestimoController.consultarDisponibilidade(codigoLivroEmprestado)) {
+		try {
 			emprestimoController.inserir(funcionarioController.consultar(cpfFuncionarioEmprestimo),
-					leitorController.consultar(cpfLeitorEmprestimo), livroController.consultar(codigoLivroEmprestado));
-			System.out.println("Empréstimo realizado com sucesso!");
-		} else {
-			System.out.println("Livro indisponível");
+					leitorController.consultar(cpfLeitorEmprestimo),
+					livroController.consultar(codigoLivroEmprestado));
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 		System.out.println("---------Lista de empréstimos------------");
 		for (Emprestimo emprestimo : emprestimoController.retornarTodos()) {

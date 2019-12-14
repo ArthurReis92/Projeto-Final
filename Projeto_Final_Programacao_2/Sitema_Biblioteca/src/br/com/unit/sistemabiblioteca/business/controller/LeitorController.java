@@ -69,4 +69,9 @@ public class LeitorController {
 		}
 	}
 
+	public void inserirTodos(List<Leitor> listaLeitor) {
+		leitorDao.inserirTodos(listaLeitor);
+		
+	}
+
 }

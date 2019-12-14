@@ -46,5 +46,9 @@ public class LeitorDao {
 		return leitores;
 	}
 
+	public void inserirTodos(List<Leitor> listaLeitor) {
+		leitores = listaLeitor;
+	}
+
 	
 }

@@ -46,4 +46,9 @@ public class FuncionarioDao {
 		return funcionarios;
 	}
 
+	public void inserirTodos(List<Funcionario> listaFuncionario) {
+		funcionarios = listaFuncionario;
+		
+	}
+
 }
